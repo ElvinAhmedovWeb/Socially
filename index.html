@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Socially — Make New Friends</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" /> <!-- Əvvəl yazdığımız style.css istifadə et -->
+  <link rel="icon" href="assets/logo.png">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container" role="navigation" aria-label="Main navigation">
+      <a href="/" class="brand" aria-label="Socially home">
+        <img src="logo.png" alt="Socially logo" class="logo" width="140" height="40">
+      </a>
+
+      <ul class="nav-links" role="menubar">
+        <li role="none"><a role="menuitem" href="#features">Features</a></li>
+        <li role="none"><a role="menuitem" href="#how">How it works</a></li>
+        <li role="none"><a role="menuitem" href="#about">About</a></li>
+      </ul>
+
+      <div class="nav-actions" id="navCta">
+        <button class="login-btn" id="openAuthBtn" aria-haspopup="dialog">Log in</button>
+        <a class="btn download" href="#" role="button">Download</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero container" aria-labelledby="hero-title">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <h1 id="hero-title" class="hero-title">Make<br><span class="accent">New Friends</span></h1>
+        <p class="hero-sub">Socially — onlayn yeni dostlar tapmaq üçün hazırlanmış yüngül və sürətli platformadır. Əlaqə yarat, araşdır və söhbətlərə başla.</p>
+
+        <div class="hero-ctas">
+          <a href="#about" class="btn primary">Join Now</a>
+          <button class="ghost" id="openChatBtn">Open Chat</button>
+        </div>
+
+        <ul class="hero-feats">
+          <li class="feat"><strong>Real-time chat</strong><span> — Firestore ilə dərhal sinxron.</span></li>
+          <li class="feat"><strong>Profile & avatars</strong><span> — profilini fərdiləşdir.</span></li>
+          <li class="feat"><strong>Privacy</strong><span> — məlumatlar sənə məxsus.</span></li>
+        </ul>
+      </div>
+
+      <div class="hero-media" aria-hidden="true">
+        <!-- replace hero image at assets/hero.png -->
+<img src="pic.png" alt="Illustration of friends connecting" class="hero-img float-anim">
+        
+        <!-- decorative SVG ring, will be styled with CSS -->
+        <svg class="hero-decor" width="610" height="610" viewBox="0 0 210 210" aria-hidden="true">
+
+          
+          <defs><linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#df4881"/><stop offset="1" stop-color="#c430d7"/></linearGradient>
+          
+          </defs>
+          <circle cx="110" cy="110" r="90" stroke="url(#g1)" stroke-width="6" fill="none" stroke-linecap="round" class="ring"></circle>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recommended / Quick profiles -->
+
+
+  <!-- Features -->
+  <section id="features" class="container features">
+    <h2>Features</h2>
+    <div class="features-grid">
+      <div class="feature card">
+        <div class="icon" aria-hidden="true"><i class="fa-solid fa-comment"></i></div>
+        <h3>Instant Chat</h3>
+        <p>Real-time mesajlaşma, qruplar və media paylaşımı.</p>
+      </div>
+
+      <div class="feature card">
+        <div class="icon" aria-hidden="true"><i class="fa-solid fa-clock"></i></div>
+        <h3>Smart Matches</h3>
+        <p>Oxşar maraqları olan insanlarla əlaqə.</p>
+      </div>
+
+      <div class="feature card">
+        <div class="icon" aria-hidden="true"><i class="fa-solid fa-lock"></i></div>
+        <h3>Privacy</h3>
+        <p>Profil icazələri və məxfilik nəzarəti.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section id="how" class="container how">
+    <h2>How it works</h2>
+    <ol class="steps">
+      <li><strong>Sign up</strong> — email və ya Google ilə qeydiyyat.</li>
+      <li><strong>Create profile</strong> — ad, bio və avatar əlavə et.</li>
+      <li><strong>Start chatting</strong> — tövsiyə olunanlarla və yaxud DM aç.</li>
+    </ol>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="container about">
+    <h2>About</h2>
+    <p>Socially kiçik bir layihə kimi başladı — sadə, sürətli və insanlara düzgün əlaqə qurmaq üçün köməkçi olmaq məqsədilə. Bu demo versiya əsas UI/UX nümunəsidir.</p>
+  </section>
+
+
+  <!-- Auth Modal -->
+  <div id="authModal" class="modal-root" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+    <div class="modal-panel">
+      <button class="modal-close" id="closeAuth" aria-label="Close dialog">&times;</button>
+      <h3 id="authTitle">Hesab</h3>
+
+      <div class="tabs" role="tablist">
+        <button role="tab" class="tab active" id="tabSignIn">Sign In</button>
+        <button role="tab" class="tab" id="tabSignUp">Sign Up</button>
+      </div>
+
+      <div id="authError" class="error" role="alert" aria-hidden="true"></div>
+
+      <!-- sign in -->
+      <form id="signinForm" class="auth-form" novalidate>
+        <div class="field">
+          <label for="signinEmail" class="small-muted">Email</label>
+          <input id="signinEmail" name="email" type="email" autocomplete="email" required placeholder="email@example.com">
+        </div>
+        <div class="field">
+          <label for="signinPassword" class="small-muted">Password</label>
+          <input id="signinPassword" name="password" type="password" autocomplete="current-password" required placeholder="password">
+        </div>
+        <div class="row">
+          <button class="btn" type="submit">Sign in</button>
+          <button class="ghost" type="button" id="forgotPass">Forgot?</button>
+        </div>
+        <div class="divider">or</div>
+        <div class="socials">
+          <button id="googleSignIn" class="google-btn" type="button" aria-label="Sign in with Google">
+            <img src="data:image/png;base64,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" alt="" width="18" height="18"> Continue with Google
+          </button>
+        </div>
+      </form>
+
+      <!-- sign up -->
+      <form id="signupForm" class="auth-form" style="display:none" novalidate>
+        <div class="field">
+          <label for="signupName" class="small-muted">Display name</label>
+          <input id="signupName" name="name" type="text" required placeholder="Your name">
+        </div>
+        <div class="field">
+          <label for="signupEmail" class="small-muted">Email</label>
+          <input id="signupEmail" name="email" type="email" required placeholder="email@example.com">
+        </div>
+        <div class="field">
+          <label for="signupPassword" class="small-muted">Password</label>
+          <input id="signupPassword" name="password" type="password" required minlength="6" placeholder="password (min 6)">
+        </div>
+        <div class="row">
+          <button class="btn" type="submit">Create account</button>
+          <button class="ghost" type="button" id="toSignIn">Have an account?</button>
+        </div>
+        <div class="divider">or</div>
+        <div class="socials">
+          <button id="googleSignUp" class="google-btn" type="button" aria-label="Sign up with Google">
+            <img src="data:image/png;base64,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" alt="" width="18" height="18"> Continue with Google
+          </button>
+        </div>
+      </form>
+
+      <p class="small-muted" style="margin-top:12px;text-align:center;font-size:12px">
+        By joining you agree to our <a href="#terms">Terms</a>.
+      </p>
+    </div>
+  </div>
+
+  <!-- Chat widget -->
+  <aside id="chatWidget" class="chat-widget" aria-hidden="true" style="display:none">
+    <header class="chat-header" role="banner">
+      <strong id="chatTitle">Chat</strong>
+      <div class="chat-controls">
+        <button id="minimizeChat" class="btn" aria-label="Minimize">—</button>
+        <button id="closeChat" class="btn" aria-label="Close">×</button>
+      </div>
+    </header>
+
+    <div class="chat-body" id="chatBody" role="log" aria-live="polite">
+      <div class="chat-empty">No conversation yet. Say hi 👋</div>
+    </div>
+
+    <form id="chatForm" class="chat-input" aria-label="Send message">
+      <input id="chatInput" type="text" placeholder="Type a message..." autocomplete="off" />
+      <button class="btn" type="submit"><i class="fas fa-paper-plane "></i></button>
+    </form>
+  </aside>
+
+  <!-- Templates -->
+  <template id="tpl-person-card">
+    <article class="person-card">
+      <div class="avatar"><img src="" alt=""></div>
+      <div class="meta">
+        <h3 class="name"></h3>
+        <p class="bio"></p>
+        <div class="actions">
+          <button class="btn start-chat">Start Chat</button>
+        </div>
+      </div>
+    </article>
+  </template>
+
+<script type="module">
+/*
+  chat-in-index.js (embedded)
+  - No Socket.IO, no backend required
+  - Uses Firebase Auth (Google + Email/Password) and Firestore real-time listeners
+  - Toast notifications (showToast) on incoming messages
+*/
+/* =========================
+   Replace or keep this firebaseConfig with your project config
+   ========================= */
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  sendPasswordResetEmail,
+  signOut,
+  onAuthStateChanged,
+  signInAnonymously
+} from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  query,
+  orderBy,
+  onSnapshot,
+  serverTimestamp,
+  doc,
+  collection as col,
+  limit
+} from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDeCaB9Y_gzRq9BMtZs1ufbHahGlWj8E6M",
+  authDomain: "socially-2cd7b.firebaseapp.com",
+  projectId: "socially-2cd7b",
+  storageBucket: "socially-2cd7b.firebasestorage.app",
+  messagingSenderId: "25029623485",
+  appId: "1:25029623485:web:eefe4b7c1efbc2a64bc1d4",
+  measurementId: "G-ERH0N7NXWM"
+};
+
+/* init */
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+const googleProvider = new GoogleAuthProvider();
+
+/* DOM refs */
+const navCta = document.getElementById('navCta');
+const openAuthBtn = document.getElementById('openAuthBtn');
+const authModal = document.getElementById('authModal');
+const closeAuth = document.getElementById('closeAuth');
+const tabSignIn = document.getElementById('tabSignIn');
+const tabSignUp = document.getElementById('tabSignUp');
+const signinForm = document.getElementById('signinForm');
+const signupForm = document.getElementById('signupForm');
+const googleSignIn = document.getElementById('googleSignIn');
+const googleSignUp = document.getElementById('googleSignUp');
+const forgotPass = document.getElementById('forgotPass');
+const toSignIn = document.getElementById('toSignIn');
+const authError = document.getElementById('authError');
+
+const openChatBtn = document.getElementById('openChatBtn');
+const chatWidget = document.getElementById('chatWidget');
+const chatBody = document.getElementById('chatBody');
+const chatForm = document.getElementById('chatForm');
+const chatInput = document.getElementById('chatInput');
+const minimizeChat = document.getElementById('minimizeChat');
+const closeChat = document.getElementById('closeChat');
+
+const peopleGrid = document.getElementById('peopleGrid');
+const tplPerson = document.getElementById('tpl-person-card');
+
+let currentUser = null;
+let currentConversationId = 'global'; // default global room
+let unsubscribeMessages = null;
+
+/* ---------- Toasts (inject CSS & container) ---------- */
+(function injectToastCSS(){
+  if (document.getElementById('socially-toast-css')) return;
+  const css = `
+  .socially-toast-wrap{position:fixed;right:18px;top:18px;z-index:99999;display:flex;flex-direction:column;gap:10px}
+  .socially-toast{min-width:200px;padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,#111 0%,#333 100%);color:#fff;box-shadow:0 10px 30px rgba(0,0,0,0.18);font-weight:600;opacity:0;transform:translateY(-6px);transition:all .32s cubic-bezier(.2,.9,.3,1)}
+  .socially-toast.show{opacity:1;transform:none}
+  .socially-toast.info{background:linear-gradient(90deg,#0ea5e9,#0673b8)}
+  .socially-toast.success{background:linear-gradient(90deg,#10b981,#059669)}
+  .socially-toast.warn{background:linear-gradient(90deg,#f59e0b,#b45309)}
+  .socially-toast .close-btn{float:right;margin-left:8px;cursor:pointer;background:transparent;border:0;color:rgba(255,255,255,0.9);font-weight:700}
+  `;
+  const s = document.createElement('style'); s.id='socially-toast-css'; s.innerHTML = css; document.head.appendChild(s);
+  const wrap = document.createElement('div'); wrap.className = 'socially-toast-wrap'; wrap.id = 'socially-toast-wrap'; document.body.appendChild(wrap);
+})();
+function showToast(text, kind='info', timeout=3200){
+  const wrap = document.getElementById('socially-toast-wrap'); if(!wrap) return;
+  const t = document.createElement('div'); t.className = `socially-toast ${kind}`;
+  t.innerHTML = `<span>${escapeHtml(text)}</span><button class="close-btn" aria-label="close">×</button>`;
+  wrap.appendChild(t);
+  requestAnimationFrame(()=> t.classList.add('show'));
+  t.querySelector('.close-btn').addEventListener('click', ()=> hide(t));
+  const id = setTimeout(()=> hide(t), timeout);
+  function hide(el){ if(!el) return; el.classList.remove('show'); setTimeout(()=> el.remove(),260); clearTimeout(id); }
+}
+function escapeHtml(s){ return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+/* ---------- People (recommended) demo list ---------- */
+const recommended = [
+  { uid: 'ayla-uid', name: 'Ayla', bio: 'Music lover · 22', avatar: 'assets/avatar-1.png' },
+  { uid: 'rauf-uid', name: 'Rauf', bio: 'Football fan · 24', avatar: 'assets/avatar-2.png' },
+  { uid: 'lina-uid', name: 'Lina', bio: 'Photographer · 21', avatar: 'assets/avatar-3.png' }
+];
+function renderPeople(){
+  if(!peopleGrid || !tplPerson) return;
+  peopleGrid.innerHTML = '';
+  recommended.forEach(p => {
+    const node = tplPerson.content.cloneNode(true);
+    const art = node.querySelector('.person-card');
+    art.setAttribute('data-uid', p.uid);
+    art.querySelector('.avatar img').src = p.avatar;
+    art.querySelector('.avatar img').alt = p.name + ' avatar';
+    art.querySelector('.name').textContent = p.name;
+    art.querySelector('.bio').textContent = p.bio;
+    const btn = art.querySelector('.start-chat');
+    btn.setAttribute('data-peer', p.uid);
+    peopleGrid.appendChild(node);
+  });
+}
+
+/* ---------- Modal helpers ---------- */
+function openModal(mode='signin'){
+  if(!authModal) return;
+  authModal.classList.add('open');
+  authModal.setAttribute('aria-hidden','false');
+  switchTab(mode);
+  setTimeout(()=> {
+    const first = authModal.querySelector('input,button');
+    if(first) first.focus();
+  },30);
+}
+function closeModal(){
+  if(!authModal) return;
+  authModal.classList.remove('open');
+  authModal.setAttribute('aria-hidden','true');
+  clearAuthError();
+}
+function switchTab(mode='signin'){
+  const isSignIn = mode==='signin';
+  tabSignIn.classList.toggle('active', isSignIn);
+  tabSignUp.classList.toggle('active', !isSignIn);
+  signinForm.style.display = isSignIn ? 'block' : 'none';
+  signupForm.style.display = isSignIn ? 'none' : 'block';
+  clearAuthError();
+}
+function showAuthError(msg){
+  if(!authError) { alert(msg); return; }
+  authError.style.display = 'block';
+  authError.textContent = msg;
+  authError.setAttribute('aria-hidden','false');
+}
+function clearAuthError(){ if(!authError) return; authError.style.display='none'; authError.textContent=''; authError.setAttribute('aria-hidden','true'); }
+
+/* ---------- Auth actions ---------- */
+googleSignIn.addEventListener('click', async (e)=> { e.preventDefault(); try { const res = await signInWithPopup(auth, googleProvider); closeModal(); } catch(err){ console.error(err); showAuthError(err.message || 'Google failed'); }});
+googleSignUp.addEventListener('click', (e)=> { e.preventDefault(); googleSignIn.click(); });
+
+signinForm.addEventListener('submit', async (e)=> {
+  e.preventDefault(); clearAuthError();
+  const email = document.getElementById('signinEmail').value.trim();
+  const password = document.getElementById('signinPassword').value;
+  if(!email || !password) return showAuthError('Email və şifrə daxil et.');
+  try {
+    await signInWithEmailAndPassword(auth, email, password);
+    closeModal();
+  } catch(err){ console.error(err); showAuthError(err.message || 'Giriş uğursuz oldu'); }
+});
+
+signupForm.addEventListener('submit', async (e)=> {
+  e.preventDefault(); clearAuthError();
+  const name = document.getElementById('signupName').value.trim();
+  const email = document.getElementById('signupEmail').value.trim();
+  const password = document.getElementById('signupPassword').value;
+  if(!name || !email || !password) return showAuthError('Bütün sahələri doldur.');
+  if(password.length < 6) return showAuthError('Şifrə ən az 6 simvol olmalıdır.');
+  try {
+    const cred = await createUserWithEmailAndPassword(auth, email, password);
+    // optionally set displayName via updateProfile if desired
+    closeModal();
+    showToast('Hesab yaradıldı. Profilini tamamla.', 'success');
+  } catch(err){ console.error(err); showAuthError(err.message || 'Signup failed'); }
+});
+
+forgotPass.addEventListener('click', async (e)=> {
+  e.preventDefault();
+  const email = document.getElementById('signinEmail').value.trim();
+  if(!email) return showAuthError('Email daxil et.');
+  try { await sendPasswordResetEmail(auth, email); showAuthError('Reset link göndərildi.'); } catch(err){ showAuthError(err.message || 'Xəta'); }
+});
+
+document.getElementById('closeAuth').addEventListener('click', ()=> closeModal());
+document.getElementById('tabSignIn').addEventListener('click', ()=> switchTab('signin'));
+document.getElementById('tabSignUp').addEventListener('click', ()=> switchTab('signup'));
+document.getElementById('toSignIn').addEventListener('click', ()=> switchTab('signin'));
+
+/* ---------- Nav UI update ---------- */
+function updateNav(user) {
+  if(!navCta) return;
+  if(user){
+    const name = user.displayName  || (localStorage.getItem('socially_user_name')||'You');
+    const avatar = user.photoURL || '';
+    navCta.innerHTML = `
+      <span style="display:inline-flex;align-items:center;gap:10px">
+        ${avatar ? `<img src="${escapeHtml(avatar)}" style="width:36px;height:36px;border-radius:50%;object-fit:cover">` : `<div style="width:36px;height:36px;border-radius:50%;background:#eee;display:inline-flex;align-items:center;justify-content:center">${escapeHtml((name||'U').charAt(0))}</div>`}
+        <span style="color:#333">${escapeHtml(name)}</span>
+      </span>
+      <a href="profile.html" class="ghost" id="profileBtn"><i class="fa-solid fa-circle-user"></i></a>
+      <a href="#" class="btn" id="chatBtn"><i class="fa-solid fa-comment"></i></a>
+      <a href="#" class="ghost" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i></a>
+    `;
+    document.getElementById('logoutBtn').addEventListener('click', async (e)=> { e.preventDefault(); try { await signOut(auth); localStorage.removeItem('socially_user_name'); } catch(err){} });
+    document.getElementById('chatBtn').addEventListener('click', (e)=> { e.preventDefault(); openChat(); });
+  } else {
+    navCta.innerHTML = `<a href="#" class="login-btn" id="openAuthBtn">Log in</a><a href="#" class="btn">Download</a>`;
+    const newOpen = document.getElementById('openAuthBtn');
+    if(newOpen) newOpen.addEventListener('click', (ev)=> { ev.preventDefault(); openModal('signin'); });
+  }
+}
+
+/* ---------- Chat: Firestore real-time ---------- */
+function messagesCollectionRef(convoId){
+  return collection(db, 'conversations', convoId, 'messages');
+}
+function startListeningConversation(convoId){
+  if(unsubscribeMessages) unsubscribeMessages();
+  currentConversationId = convoId;
+  chatBody.innerHTML = '<div class="chat-empty">Loading…</div>';
+  const q = query(messagesCollectionRef(convoId), orderBy('ts','asc'), limit(500));
+  unsubscribeMessages = onSnapshot(q, (snap)=>{
+    chatBody.innerHTML = '';
+    if(snap.empty){ chatBody.innerHTML = '<div class="chat-empty">Hələ mesaj yoxdur.</div>'; return; }
+    snap.forEach(doc => {
+      const d = doc.data();
+      appendMessageToUI(d.fromUid, d.displayName, d.text, d.ts);
+    });
+    // toast for last message if not mine
+    const last = snap.docs[snap.docs.length -1];
+    if (last){
+      const data = last.data();
+      if(!currentUser || data.fromUid !== currentUser.uid) {
+        showToast(`${data.displayName || 'Yeni'}: ${String(data.text).slice(0,60)}`, 'info', 2500);
+      }
+    }
+  }, (err)=> {
+    console.error('onSnapshot error', err);
+    showToast('Mesajlar çəkilmədi', 'warn');
+  });
+}
+
+function appendMessageToUI(fromUid, displayName, text, ts){
+  const el = document.createElement('div');
+  const isMe = currentUser && (fromUid === currentUser.uid);
+  el.className = 'msg' + (isMe ? ' sent' : '');
+  el.innerHTML = `
+    ${!isMe ? `<div class="msg-from">${escapeHtml(displayName || 'Anon')}</div>` : ''}
+    <div class="msg-text">${escapeHtml(text)}</div>
+    <div class="msg-time">${ts && ts.toDate ? new Date(ts.toDate()).toLocaleTimeString() : (ts? new Date(ts).toLocaleTimeString():'')}</div>
+  `;
+  chatBody.appendChild(el);
+  chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+async function sendMessage(text){
+  if(!currentUser){ showToast('Zəhmət ol giriş et', 'warn'); openModal('signin'); return; }
+  const payload = {
+    text: String(text).slice(0,4000),
+    fromUid: currentUser.uid,
+    displayName: currentUser.displayName || currentUser.email || (localStorage.getItem('socially_user_name')||'You'),
+    ts: serverTimestamp()
+  };
+  try {
+    await addDoc(messagesCollectionRef(currentConversationId), payload);
+    // UI will update via onSnapshot
+  } catch(err){
+    console.error('addDoc error', err);
+    showToast('Mesaj göndərilmədi', 'warn');
+  }
+}
+
+/* ---------- UI actions ---------- */
+function openChat(){
+  // ensure logged or anonymous
+  if(!currentUser){
+    openModal('signin');
+    return;
+  }
+  chatWidget.style.display = 'flex';
+  chatWidget.setAttribute('aria-hidden','false');
+  startListeningConversation(currentConversationId);
+}
+openChatBtn.addEventListener('click', (e)=> { e.preventDefault(); openChat(); });
+document.getElementById('loginBtn')?.addEventListener('click', (e)=> { e.preventDefault(); openModal('signin'); });
+
+chatForm.addEventListener('submit', (e)=> {
+  e.preventDefault();
+  const txt = (chatInput.value || '').trim();
+  if(!txt) return;
+  sendMessage(txt);
+  chatInput.value = '';
+});
+minimizeChat.addEventListener('click', ()=> { chatWidget.classList.toggle('minimized'); });
+closeChat.addEventListener('click', ()=> { chatWidget.style.display = 'none'; });
+
+/* ---------- start conversation with recommended user (DM) ---------- */
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest && e.target.closest('.start-chat');
+  if (!btn) return;
+  e.preventDefault();
+  const peer = btn.getAttribute('data-peer');
+  if (!peer) return;
+  // create deterministic convo id
+  const myId = currentUser ? currentUser.uid : 'anon';
+  const convoId = `dm_${[myId, peer].sort().join('_')}`;
+  currentConversationId = convoId;
+  openChat();
+  // ensure conversation will be created when first message sent (no backend required)
+});
+
+/* ---------- auth state handling ---------- */
+onAuthStateChanged(auth, async (user) => {
+  if(user){
+    currentUser = user;
+    localStorage.setItem('socially_user_name', user.displayName || user.email || '');
+    updateNav(user);
+    // If chat visible, start listening
+    if(chatWidget.style.display !== 'none') startListeningConversation(currentConversationId);
+  } else {
+    // attempt anonymous sign-in so Firestore rules (if require auth) work
+    try {
+      const anon = await signInAnonymously(auth);
+      currentUser = anon.user;
+      updateNav(null); // still no profile in nav
+      if(chatWidget.style.display !== 'none') startListeningConversation(currentConversationId);
+    } catch(err){
+      console.warn('anonymous failed', err);
+      currentUser = null;
+      updateNav(null);
+    }
+  }
+});
+
+/* ---------- initial render ---------- */
+renderPeople();
+updateNav(null);
+
+/* ---------- small UX: open auth from nav ***********/
+document.addEventListener('click', (e)=>{
+  if(e.target && e.target.matches && e.target.matches('#openAuthBtn')) { e.preventDefault(); openModal('signin'); }
+});
+
+/* Add Escape to close modal */
+document.addEventListener('keydown', (e)=> { if(e.key === 'Escape') closeModal(); });
+
+</script>
+</body>
+</html>
